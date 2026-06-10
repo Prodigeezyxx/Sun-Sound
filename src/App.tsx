@@ -1,163 +1,308 @@
-import { Menu } from 'lucide-react';
-import React from 'react';
-import posterImg from './assets/images/festival_poster_1781115766963.png';
+import { Instagram, MapPin, Music2, Sun } from 'lucide-react';
+import logoImg from './assets/images/sun-sound-logo.png';
+import posterImg from './assets/images/sun-sound-poster.png';
+
+const FESTIVAL_NAME = 'Sun and Sound Festival';
+const SIGNUP_URL = 'https://laylo.com/sunandsound/sssf';
+
+const MARQUEE_ITEMS = [
+  FESTIVAL_NAME.toUpperCase(),
+  'TORONTO',
+  'CABANA POOL BAR',
+  'JULY 24, 2026',
+  'NO11 — PERFORMING LIVE',
+  'SUNANDSOUND.CA',
+  '21+',
+];
+
+function TorontoSkyline({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 1440 240"
+      preserveAspectRatio="xMidYMax meet"
+      aria-hidden
+      className={className}
+      fill="currentColor"
+    >
+      {/* Distant haze layer */}
+      <g opacity="0.22">
+        <rect x="0" y="160" width="50" height="80" />
+        <rect x="55" y="150" width="45" height="90" />
+        <rect x="105" y="170" width="40" height="70" />
+        <rect x="150" y="140" width="50" height="100" />
+        <rect x="205" y="160" width="45" height="80" />
+        <rect x="255" y="135" width="40" height="105" />
+        <rect x="300" y="155" width="50" height="85" />
+        <rect x="355" y="145" width="45" height="95" />
+        <rect x="405" y="165" width="50" height="75" />
+        <rect x="460" y="140" width="45" height="100" />
+        <rect x="510" y="155" width="50" height="85" />
+        <rect x="565" y="125" width="45" height="115" />
+        <rect x="615" y="155" width="50" height="85" />
+        <rect x="670" y="140" width="45" height="100" />
+        <rect x="720" y="160" width="50" height="80" />
+        <rect x="775" y="135" width="45" height="105" />
+        <rect x="825" y="155" width="50" height="85" />
+        <rect x="880" y="150" width="45" height="90" />
+        <rect x="930" y="135" width="50" height="105" />
+        <rect x="985" y="160" width="45" height="80" />
+        <rect x="1035" y="140" width="50" height="100" />
+        <rect x="1090" y="155" width="45" height="85" />
+        <rect x="1140" y="125" width="50" height="115" />
+        <rect x="1195" y="155" width="45" height="85" />
+        <rect x="1245" y="140" width="50" height="100" />
+        <rect x="1300" y="160" width="45" height="80" />
+        <rect x="1350" y="135" width="50" height="105" />
+        <rect x="1405" y="155" width="35" height="85" />
+      </g>
+
+      {/* Front skyline layer */}
+      <g opacity="0.55">
+        {/* Lakeshore low-rises */}
+        <rect x="0" y="195" width="65" height="45" />
+        <rect x="55" y="180" width="50" height="60" />
+        <rect x="100" y="195" width="55" height="45" />
+        <rect x="150" y="165" width="50" height="75" />
+        <rect x="195" y="185" width="55" height="55" />
+        <rect x="245" y="170" width="50" height="70" />
+
+        {/* CN Tower — antenna, sky pod, main pod, base */}
+        <rect x="317" y="8" width="6" height="58" />
+        <ellipse cx="320" cy="70" rx="10" ry="5" />
+        <rect x="314" y="75" width="12" height="52" />
+        <path d="M 290 127 L 350 127 L 346 145 L 338 160 L 302 160 L 294 145 Z" />
+        <rect x="307" y="160" width="26" height="8" />
+        <rect x="312" y="168" width="16" height="46" />
+        <path d="M 293 214 L 347 214 L 363 240 L 277 240 Z" />
+
+        {/* Filler building */}
+        <rect x="370" y="185" width="35" height="55" />
+
+        {/* Rogers Centre dome */}
+        <path d="M 415 240 Q 415 175 470 175 Q 525 175 525 240 Z" />
+
+        {/* Downtown core */}
+        <rect x="530" y="160" width="55" height="80" />
+        <rect x="585" y="140" width="50" height="100" />
+        <rect x="635" y="165" width="60" height="75" />
+        <rect x="695" y="150" width="55" height="90" />
+        <rect x="750" y="135" width="50" height="105" />
+        <rect x="800" y="120" width="55" height="120" />
+        <rect x="855" y="140" width="50" height="100" />
+        <rect x="905" y="125" width="55" height="115" />
+        <rect x="960" y="155" width="50" height="85" />
+        <rect x="1010" y="140" width="60" height="100" />
+        <rect x="1070" y="160" width="55" height="80" />
+        <rect x="1125" y="145" width="50" height="95" />
+        <rect x="1175" y="175" width="55" height="65" />
+        <rect x="1230" y="155" width="50" height="85" />
+        <rect x="1280" y="175" width="60" height="65" />
+        <rect x="1340" y="160" width="50" height="80" />
+        <rect x="1390" y="185" width="50" height="55" />
+      </g>
+    </svg>
+  );
+}
+
+function MarqueeStrip() {
+  const items = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS];
+  return (
+    <div className="overflow-hidden bg-[var(--color-deep)] py-3 border-y border-white/10">
+      <div className="flex w-max animate-marquee gap-10">
+        {items.map((item, i) => (
+          <span
+            key={`${item}-${i}`}
+            className="font-display text-sm md:text-base tracking-wide text-[var(--color-sun)] uppercase whitespace-nowrap flex items-center gap-10"
+          >
+            {item}
+            <Sun size={14} className="text-white/40 shrink-0" />
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-black text-white font-mono selection:bg-[#E5B55A] selection:text-black flex flex-col">
-      {/* Navbar */}
-      <nav className="flex items-center justify-between px-6 py-4 border-b border-white/10 z-10 relative bg-black">
-        <div className="flex-1">
-          <button className="text-white hover:text-[#E5B55A] transition-colors cursor-pointer">
-            <Menu size={28} />
-          </button>
-        </div>
-        
-        <div className="flex items-center justify-center gap-6 flex-1 whitespace-nowrap">
-          <div className="font-display text-4xl tracking-widest uppercase">
-            SUN & SOUND
-          </div>
-          <div className="hidden md:flex flex-col text-xs space-y-0.5 border-l border-white/30 pl-6 leading-tight">
-            <span>TORONTO, CANADA</span>
-            <span>CABANA</span>
-            <span>JULY 24, 2026</span>
-          </div>
-        </div>
-        
-        <div className="flex-1 flex justify-end">
-          <button className="bg-[#E5B55A] text-black font-display tracking-widest uppercase px-6 py-2 text-xl hover:bg-[#d4a44b] transition-colors cursor-pointer">
-            TICKETS
-          </button>
-        </div>
-      </nav>
+    <div className="min-h-screen bg-[var(--color-sky)] text-[var(--color-deep)] selection:bg-[var(--color-sun)] selection:text-[var(--color-deep)]">
+      <div className="fixed inset-0 -z-10 bg-gradient-to-b from-[#4db3f2] via-[var(--color-sky)] to-[var(--color-pool)]" />
+      <div className="fixed top-[-20%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-[var(--color-sun)]/15 blur-3xl -z-10 pointer-events-none" />
+      <div className="fixed bottom-[-10%] left-[-15%] w-[50vw] h-[50vw] rounded-full bg-white/10 blur-3xl -z-10 pointer-events-none" />
 
-      {/* Hero Section */}
-      <main className="flex-1 flex flex-col lg:flex-row w-full max-w-[1600px] mx-auto">
-        <div className="flex-1 flex flex-col justify-center px-8 lg:px-20 py-16 lg:py-0 w-full relative z-10">
-          <h1 className="font-display text-6xl md:text-8xl xl:text-9xl tracking-tight leading-[0.9] uppercase mb-4">
-            Sign Up To Be<br/>The First To Know
-          </h1>
-          <h2 className="font-display text-3xl md:text-4xl tracking-wide uppercase mb-8">
-            ONCE TICKETS GO LIVE.
-          </h2>
-          <div className="text-sm tracking-widest font-bold mb-10 w-fit border-b-2 border-transparent hover:border-current transition-colors">
-            21+ Only
+      {/* Nav */}
+      <header className="sticky top-0 z-50 px-4 md:px-8 py-3 md:py-4">
+        <nav className="max-w-6xl mx-auto flex items-center justify-between gap-3 bg-white/20 backdrop-blur-md border border-white/30 rounded-full px-4 md:px-6 py-2 md:py-3 shadow-lg shadow-black/5">
+          <a href="#" className="shrink-0 md:w-28">
+            <img
+              src={logoImg}
+              alt={FESTIVAL_NAME}
+              className="h-14 w-14 md:h-16 md:w-16 object-contain drop-shadow-lg"
+            />
+          </a>
+
+          <div className="flex flex-col items-center text-center min-w-0">
+            <span className="font-display text-sm sm:text-base md:text-lg text-white drop-shadow-sm leading-tight">
+              {FESTIVAL_NAME}
+            </span>
+            <div className="hidden sm:flex items-center gap-2 text-white/75 text-[10px] md:text-xs font-medium mt-0.5">
+              <MapPin size={11} className="shrink-0" />
+              <span>Toronto · Cabana · Jul 24, 2026</span>
+            </div>
           </div>
-          
-          <form 
-            className="flex flex-col sm:flex-row gap-4 max-w-xl"
-            onSubmit={(e) => { e.preventDefault(); alert("Thanks for signing up!"); }}
+
+          <a
+            href={SIGNUP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 bg-[var(--color-sun)] text-[var(--color-deep)] font-display text-sm md:text-base px-4 md:px-5 py-2 rounded-full hover:bg-[var(--color-sun-deep)] transition-colors shadow-md"
           >
-            <input 
-              type="email" 
-              placeholder="Your email address" 
-              className="bg-transparent border border-white/30 px-4 py-3 md:py-4 flex-1 focus:outline-none focus:border-[#E5B55A] transition-colors rounded-none placeholder:text-white/50"
-              required
-            />
-            <button 
-              type="submit"
-              className="bg-[#E5B55A] text-black font-display tracking-widest uppercase px-8 py-3 md:py-4 text-2xl hover:bg-[#d4a44b] transition-colors whitespace-nowrap cursor-pointer"
+            Sign Up
+          </a>
+        </nav>
+      </header>
+
+      {/* Hero */}
+      <main className="px-4 md:px-8 pt-4 pb-16 md:pt-8 md:pb-24">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div className="order-2 lg:order-1 text-center lg:text-left">
+            <p className="inline-flex items-center gap-2 bg-[var(--color-deep)]/80 text-[var(--color-sun)] font-display tracking-widest text-xs md:text-sm px-4 py-1.5 rounded-full mb-6 backdrop-blur-sm uppercase">
+              <Music2 size={14} />
+              Tickets Dropping Soon
+            </p>
+
+            <h1 className="font-display uppercase tracking-tight text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[0.92] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.35)] mb-6">
+              Be the first<br />to know when<br /><span className="text-[var(--color-sun)]">tickets drop.</span>
+            </h1>
+
+            <p className="text-white/85 text-base md:text-lg max-w-md mx-auto lg:mx-0 mb-8 leading-relaxed">
+              A summer day on the water in Toronto. Sun, sound, and Cabana vibes — July 24th, 2026.
+            </p>
+
+            <div
+              id="signup"
+              className="scroll-mt-28 max-w-md mx-auto lg:mx-0 bg-white/95 backdrop-blur rounded-2xl p-5 md:p-6 shadow-2xl shadow-[var(--color-deep)]/20 animate-pulse-glow"
             >
-              SIGN UP
-            </button>
-          </form>
-        </div>
-        
-        <div className="flex-1 lg:max-w-[45%] xl:max-w-[50%] p-8 lg:p-12 flex items-center justify-center bg-zinc-900/50">
-          <div className="w-full aspect-[4/5] relative  shadow-2xl shadow-black/50 transform transition-transform hover:scale-[1.02] duration-500 overflow-hidden border border-white/10">
-            <img 
-              src={posterImg}
-              alt="Sun & Sound Festival Lineup Poster" 
-              className="absolute inset-0 w-full h-full object-cover object-center"
-            />
+              <p className="block font-display uppercase tracking-widest text-base text-[var(--color-deep)] mb-3">
+                Get on the list
+              </p>
+              <a
+                href={SIGNUP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full text-center bg-[var(--color-deep)] text-white font-display uppercase tracking-wider text-lg px-7 py-4 rounded-xl hover:bg-[var(--color-pool)] transition-colors"
+              >
+                Sign Up Now
+              </a>
+              <p className="text-xs text-[var(--color-deep)]/50 mt-3">21+ · No spam, just the drop.</p>
+            </div>
+          </div>
+
+          {/* Poster */}
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+            <div className="relative animate-float">
+              <div className="absolute -inset-3 bg-[var(--color-sun)]/40 rounded-[2rem] blur-xl" />
+              <div className="relative w-[min(100%,340px)] md:w-[min(100%,380px)] aspect-[3/4] rounded-[1.75rem] overflow-hidden shadow-2xl shadow-[var(--color-deep)]/30 border-4 border-white/60 rotate-[-2deg] hover:rotate-0 transition-transform duration-500">
+                <img
+                  src={posterImg}
+                  alt={`${FESTIVAL_NAME} — NO11 performing live`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-4 -left-4 md:-left-8 bg-[var(--color-sun)] text-[var(--color-deep)] font-display uppercase tracking-wider text-base px-4 py-2 rounded-full shadow-lg rotate-[-6deg]">
+                NO11 · Live
+              </div>
+            </div>
           </div>
         </div>
       </main>
 
-      {/* Info Blocks Row */}
-      <section className="grid grid-cols-1 md:grid-cols-3 w-full border-t border-white/10">
-        <a href="#hotels" className="group bg-[#E5B55A] text-black flex flex-col items-center justify-center text-center p-16 md:p-20 hover:opacity-90 transition-opacity border-b md:border-b-0 md:border-r border-black/10">
-          <h3 className="font-display text-4xl mb-4 tracking-wider">OFFICIAL HOTELS</h3>
-          <p className="font-mono text-sm mb-12">for SUN & SOUND 2026</p>
-          
-          <div className="flex flex-col gap-6 font-display text-2xl tracking-wide group-hover:gap-8 transition-all">
-            <span className="flex items-center gap-2">BOOK AT CABANA SUITES &rarr;</span>
-            <span className="flex items-center gap-2">BOOK AT TORONTO DOWNTOWN &rarr;</span>
+      {/* Toronto skyline backdrop */}
+      <div className="relative -mt-24 md:-mt-40 pointer-events-none text-[var(--color-deep)] leading-none" aria-hidden>
+        <TorontoSkyline className="w-full h-auto block" />
+      </div>
+
+      <MarqueeStrip />
+
+      {/* Experience */}
+      <section className="bg-[var(--color-deep)] text-white py-16 md:py-24 px-4 md:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12 md:mb-16">
+            <p className="font-display uppercase tracking-[0.4em] text-xs md:text-sm text-[var(--color-sun)]/80 mb-4">
+              Toronto · Jul 24 · 2026
+            </p>
+            <h2 className="font-display uppercase tracking-tight text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[var(--color-sun)] leading-[0.9] mb-4">
+              Poolside<br />in the 6ix
+            </h2>
+            <p className="text-white/70 max-w-lg mx-auto text-sm md:text-base mt-6">
+              Toronto summer energy at Cabana — skyline views, water, and a lineup built for the season.
+            </p>
           </div>
-        </a>
-        
-        <a href="#merch" className="group bg-[#DBBEFF] text-black flex flex-col items-center justify-center text-center p-16 md:p-20 hover:opacity-90 transition-opacity border-b md:border-b-0 md:border-r border-black/10">
-          <h3 className="font-display text-4xl mb-4 tracking-wider">MERCHANDISE</h3>
-          <p className="font-mono text-sm mb-12 uppercase">Grab your official Sun & Sound gear</p>
-          
-          <div className="font-display text-2xl tracking-wide flex items-center gap-2 group-hover:gap-4 transition-all">
-            BUY MERCH &rarr;
+
+          <div className="grid sm:grid-cols-2 gap-5 md:gap-8 max-w-3xl mx-auto">
+            {[
+              {
+                icon: MapPin,
+                title: 'Cabana, Toronto',
+                desc: 'Right on the water with the CN Tower in view. The city\'s summer home base.',
+              },
+              {
+                icon: Sun,
+                title: 'July 24, 2026',
+                desc: 'One day. Full sun. Save the date — tickets are coming.',
+              },
+            ].map(({ icon: Icon, title, desc }) => (
+              <div
+                key={title}
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 hover:bg-white/10 transition-colors"
+              >
+                <div className="w-10 h-10 rounded-full bg-[var(--color-sun)]/20 flex items-center justify-center mb-4">
+                  <Icon size={20} className="text-[var(--color-sun)]" />
+                </div>
+                <h3 className="font-display uppercase tracking-wide text-2xl mb-2">{title}</h3>
+                <p className="text-white/60 text-sm leading-relaxed">{desc}</p>
+              </div>
+            ))}
           </div>
-        </a>
-        
-        <a href="#airline" className="group bg-[#96AED0] text-black flex flex-col items-center justify-center text-center p-16 md:p-20 hover:opacity-90 transition-opacity">
-          <h3 className="font-display text-4xl mb-4 tracking-wider max-w-[250px] leading-[1.1]">OFFICIAL AIRLINE PARTNER</h3>
-          <p className="font-mono text-sm mb-12 max-w-[280px] leading-relaxed">Air Canada is offering special discounts for SUN & SOUND.</p>
-          
-          <div className="font-display text-2xl tracking-wide flex items-center gap-2 group-hover:gap-4 transition-all uppercase">
-            Click here to book your flight
-          </div>
-        </a>
+        </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-[#1A1A1A] text-white py-20 px-8 lg:px-20 border-t-4 border-[#E5B55A]">
-        <div className="max-w-[1600px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-          
-          <div>
-            <h4 className="font-display text-3xl tracking-widest mb-6">FESTIVAL</h4>
-            <ul className="space-y-4 font-mono text-sm text-gray-300">
-              <li><a href="#home" className="hover:text-white transition-colors">Home</a></li>
-              <li><a href="#lineup" className="hover:text-white transition-colors">Lineup</a></li>
-              <li><a href="#partners" className="hover:text-white transition-colors">Partners</a></li>
-              <li><a href="#tickets" className="hover:text-white transition-colors">Tickets</a></li>
-            </ul>
+      <div className="bg-[var(--color-deep)] leading-none">
+        <svg viewBox="0 0 1440 80" fill="none" className="w-full" preserveAspectRatio="none">
+          <path
+            d="M0 40C240 80 480 0 720 40C960 80 1200 0 1440 40V80H0V40Z"
+            fill="var(--color-sky)"
+          />
+        </svg>
+      </div>
+
+      <footer className="bg-[var(--color-sky)] px-4 md:px-8 py-12 md:py-16">
+        <div className="max-w-6xl mx-auto flex flex-col items-center gap-6 md:gap-8">
+          <p className="font-display uppercase tracking-tight text-5xl sm:text-6xl md:text-7xl text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.25)] text-center leading-[0.9]">
+            Sun &amp; Sound
+          </p>
+          <p className="font-display uppercase tracking-[0.3em] text-white/80 text-sm">sunandsound.ca · Toronto, ON</p>
+
+          <div className="flex items-center gap-4">
+            <a
+              href="#instagram"
+              aria-label="Instagram"
+              className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-[var(--color-sun)] hover:text-[var(--color-deep)] transition-colors"
+            >
+              <Instagram size={18} />
+            </a>
+            <a
+              href="#tiktok"
+              aria-label="TikTok"
+              className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-[var(--color-sun)] hover:text-[var(--color-deep)] transition-colors font-display text-xs"
+            >
+              TT
+            </a>
           </div>
-          
-          <div>
-            <h4 className="font-display text-3xl tracking-widest mb-6">HELP</h4>
-            <ul className="space-y-4 font-mono text-sm text-gray-300">
-              <li><a href="#contact" className="hover:text-white transition-colors">Contact Us</a></li>
-              <li><a href="#safety" className="hover:text-white transition-colors">Safety</a></li>
-              <li><a href="#accessibility" className="hover:text-white transition-colors">Accessibility</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="font-display text-3xl tracking-widest mb-6">SOCIAL</h4>
-            <ul className="space-y-4 font-mono text-sm text-gray-300">
-              <li><a href="#instagram" className="hover:text-white transition-colors">Instagram</a></li>
-              <li><a href="#twitter" className="hover:text-white transition-colors">Twitter(X)</a></li>
-              <li><a href="#youtube" className="hover:text-white transition-colors">YouTube</a></li>
-              <li><a href="#facebook" className="hover:text-white transition-colors">Facebook</a></li>
-              <li><a href="#tiktok" className="hover:text-white transition-colors">TikTok</a></li>
-              <li><a href="#snapchat" className="hover:text-white transition-colors">SnapChat</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="font-display text-3xl tracking-widest mb-6">LET'S BE FRIENDS</h4>
-            <form className="flex flex-col gap-3" onSubmit={(e) => { e.preventDefault(); alert("Subscribed!"); }}>
-              <input 
-                type="email" 
-                placeholder="Your email" 
-                className="bg-white text-black px-4 py-3 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-[#96AED0]"
-                required
-              />
-              <button 
-                type="submit"
-                className="bg-[#96AED0] text-black font-display tracking-widest text-xl py-3 uppercase hover:bg-white transition-colors cursor-pointer"
-              >
-                Sign up for emails
-              </button>
-            </form>
-          </div>
-          
+
+          <p className="text-white/50 text-xs text-center">
+            &copy; 2026 {FESTIVAL_NAME}. All rights reserved.
+          </p>
         </div>
       </footer>
     </div>

@@ -1,0 +1,6 @@
+{
+  "name": "Sun & Sound Festival",
+  "description": "Landing page for the Sun & Sound Festival in Toronto",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

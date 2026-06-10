@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Instagram, MapPin, Music2, Sun } from 'lucide-react';
 import logoImg from './assets/images/sun-sound-logo.png';
 import posterImg from './assets/images/sun-sound-poster.png';
@@ -24,6 +25,62 @@ const MARQUEE_ITEMS = [
   'SUNANDSOUND.CA',
   '21+',
 ];
+
+function LineupDeck({ posters }: { posters: string[] }) {
+  const [activeIdx, setActiveIdx] = useState(0);
+  const n = posters.length;
+
+  // Computes the visual position for a poster based on its depth in the stack
+  // (0 = front, 1 = next, 2+ = deeper). Stays as inline transforms so the 500ms
+  // transition smoothly interpolates between positions on shuffle.
+  const styleForDepth = (depth: number): { transform: string; zIndex: number } => {
+    if (depth === 0) {
+      return { transform: 'translate(0%, 0%) rotate(3deg) scale(1)', zIndex: 30 };
+    }
+    if (depth === 1) {
+      return { transform: 'translate(-14%, 6%) rotate(-7deg) scale(0.93)', zIndex: 20 };
+    }
+    const t = -(14 + (depth - 1) * 8);
+    const y = 6 + (depth - 1) * 4;
+    const r = -7 - (depth - 1) * 5;
+    const s = Math.max(0.7, 0.93 - (depth - 1) * 0.07);
+    return { transform: `translate(${t}%, ${y}%) rotate(${r}deg) scale(${s})`, zIndex: 20 - depth };
+  };
+
+  return (
+    <div className="relative animate-float w-full max-w-[400px] aspect-[3/4]">
+      <div className="absolute inset-0 bg-[var(--color-sun)]/40 rounded-[2rem] blur-2xl" />
+
+      {posters.map((src, idx) => {
+        const depth = (idx - activeIdx + n) % n;
+        const { transform, zIndex } = styleForDepth(depth);
+        const isFront = depth === 0;
+        return (
+          <button
+            key={idx}
+            type="button"
+            onClick={() => setActiveIdx(idx)}
+            aria-label={`${isFront ? 'Featured' : 'Bring forward'} — lineup poster ${idx + 1} of ${n}`}
+            aria-pressed={isFront}
+            style={{ transform, zIndex }}
+            className="absolute top-0 right-0 w-[82%] aspect-[3/4] rounded-[1.5rem] overflow-hidden shadow-2xl shadow-[var(--color-deep)]/40 border-4 border-white/60 transition-all duration-500 ease-out cursor-pointer focus:outline-none focus-visible:ring-4 focus-visible:ring-[var(--color-sun)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+          >
+            <img
+              src={src}
+              alt={`Sun and Sound Festival lineup poster ${idx + 1}`}
+              className="w-full h-full object-cover pointer-events-none select-none"
+              draggable={false}
+            />
+          </button>
+        );
+      })}
+
+      <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-[var(--color-sun)] text-[var(--color-deep)] font-display uppercase tracking-wider text-sm sm:text-base px-5 py-2 rounded-full shadow-lg rotate-[-3deg] z-40 whitespace-nowrap pointer-events-none">
+        Lineup · Tap to swap
+      </div>
+    </div>
+  );
+}
 
 function MarqueeStrip() {
   const items = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS];
@@ -140,32 +197,7 @@ export default function App() {
                 </div>
               </div>
             ) : (
-              // Deck of posters — front + fan of extras behind
-              <div className="relative animate-float w-full max-w-[420px] aspect-[3/4]">
-                <div className="absolute inset-0 bg-[var(--color-sun)]/40 rounded-[2rem] blur-2xl" />
-
-                {/* Back poster — secondary lineup */}
-                <div className="absolute top-6 -left-2 sm:-left-4 md:-left-6 w-[78%] aspect-[3/4] rounded-[1.5rem] overflow-hidden shadow-2xl shadow-[var(--color-deep)]/40 border-4 border-white/55 rotate-[-7deg] hover:rotate-[-2deg] transition-transform duration-500 z-0">
-                  <img
-                    src={EXTRA_POSTERS[0]}
-                    alt={`${FESTIVAL_NAME} — additional lineup`}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                {/* Front poster — NO11 headliner */}
-                <div className="absolute top-0 right-0 w-[82%] aspect-[3/4] rounded-[1.75rem] overflow-hidden shadow-2xl shadow-[var(--color-deep)]/30 border-4 border-white/60 rotate-[3deg] hover:rotate-0 transition-transform duration-500 z-10">
-                  <img
-                    src={posterImg}
-                    alt={`${FESTIVAL_NAME} — NO11 performing live`}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-[var(--color-sun)] text-[var(--color-deep)] font-display uppercase tracking-wider text-sm sm:text-base px-5 py-2 rounded-full shadow-lg rotate-[-3deg] z-20 whitespace-nowrap">
-                  Lineup · Live
-                </div>
-              </div>
+              <LineupDeck posters={[posterImg, ...EXTRA_POSTERS]} />
             )}
           </div>
         </div>

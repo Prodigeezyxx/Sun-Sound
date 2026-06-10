@@ -37,17 +37,17 @@ function LineupDeck({ posters }: { posters: string[] }) {
       return { transform: 'translate(0%, 0%) rotate(3deg) scale(1)', zIndex: 30 };
     }
     if (depth === 1) {
-      return { transform: 'translate(-10%, 5%) rotate(-6deg) scale(0.95)', zIndex: 20 };
+      return { transform: 'translate(-14%, 6%) rotate(-7deg) scale(0.93)', zIndex: 20 };
     }
-    const t = -(10 + (depth - 1) * 6);
-    const y = 5 + (depth - 1) * 3;
-    const r = -6 - (depth - 1) * 4;
-    const s = Math.max(0.75, 0.95 - (depth - 1) * 0.05);
+    const t = -(14 + (depth - 1) * 8);
+    const y = 6 + (depth - 1) * 4;
+    const r = -7 - (depth - 1) * 5;
+    const s = Math.max(0.7, 0.93 - (depth - 1) * 0.07);
     return { transform: `translate(${t}%, ${y}%) rotate(${r}deg) scale(${s})`, zIndex: 20 - depth };
   };
 
   return (
-    <div className="relative animate-float w-full max-w-[480px] aspect-[3/4]">
+    <div className="relative animate-float w-full max-w-[400px] aspect-[3/4]">
       <div className="absolute inset-0 bg-[var(--color-sun)]/40 rounded-[2rem] blur-2xl" />
 
       {posters.map((src, idx) => {
@@ -62,12 +62,12 @@ function LineupDeck({ posters }: { posters: string[] }) {
             aria-label={`${isFront ? 'Featured' : 'Bring forward'} — lineup poster ${idx + 1} of ${n}`}
             aria-pressed={isFront}
             style={{ transform, zIndex }}
-            className="absolute top-0 right-0 w-[90%] aspect-[3/4] rounded-[1.5rem] overflow-hidden shadow-2xl shadow-[var(--color-deep)]/40 border-4 border-white/60 transition-all duration-500 ease-out cursor-pointer focus:outline-none focus-visible:ring-4 focus-visible:ring-[var(--color-sun)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+            className="absolute top-0 right-0 w-[82%] aspect-[3/4] rounded-[1.5rem] overflow-hidden shadow-2xl shadow-[var(--color-deep)]/40 border-4 border-white/60 transition-all duration-500 ease-out cursor-pointer focus:outline-none focus-visible:ring-4 focus-visible:ring-[var(--color-sun)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
           >
             <img
               src={src}
               alt={`Sun and Sound Festival lineup poster ${idx + 1}`}
-              className="w-full h-full object-cover pointer-events-none select-none"
+              className="w-full h-full object-cover object-bottom pointer-events-none select-none"
               draggable={false}
             />
           </button>
@@ -188,11 +188,11 @@ export default function App() {
               // Single poster
               <div className="relative animate-float">
                 <div className="absolute -inset-3 bg-[var(--color-sun)]/40 rounded-[2rem] blur-xl" />
-                <div className="relative w-[min(100%,380px)] md:w-[min(100%,440px)] aspect-[3/4] rounded-[1.75rem] overflow-hidden shadow-2xl shadow-[var(--color-deep)]/30 border-4 border-white/60 rotate-[-2deg] hover:rotate-0 transition-transform duration-500">
+                <div className="relative w-[min(100%,340px)] md:w-[min(100%,380px)] aspect-[3/4] rounded-[1.75rem] overflow-hidden shadow-2xl shadow-[var(--color-deep)]/30 border-4 border-white/60 rotate-[-2deg] hover:rotate-0 transition-transform duration-500">
                   <img
                     src={posterImg}
                     alt={`${FESTIVAL_NAME} — NO11 performing live`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-bottom"
                   />
                 </div>
                 <div className="absolute -bottom-4 -left-4 md:-left-8 bg-[var(--color-sun)] text-[var(--color-deep)] font-display uppercase tracking-wider text-base px-4 py-2 rounded-full shadow-lg rotate-[-6deg]">

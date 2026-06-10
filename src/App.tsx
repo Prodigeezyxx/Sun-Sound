@@ -52,14 +52,17 @@ export default function App() {
             />
           </a>
 
-          <div className="flex flex-col items-center text-center min-w-0">
-            <span className="font-display text-sm sm:text-base md:text-lg text-white drop-shadow-sm leading-tight">
-              {FESTIVAL_NAME}
+          <div className="flex flex-col items-center text-center min-w-0 leading-none">
+            <span className="font-display uppercase tracking-tight text-2xl sm:text-3xl md:text-4xl leading-[0.85] whitespace-nowrap drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
+              <span className="text-white">Sun</span>
+              <span className="text-[var(--color-sun)] italic mx-0.5">&amp;</span>
+              <span className="text-white">Sound</span>
             </span>
-            <div className="hidden sm:flex items-center gap-2 text-white/75 text-[10px] md:text-xs font-medium mt-0.5">
-              <MapPin size={11} className="shrink-0" />
-              <span>Toronto · Cabana · Jul 24, 2026</span>
-            </div>
+            <span className="hidden sm:flex items-center gap-1.5 text-[var(--color-sun)] text-[10px] md:text-xs font-display tracking-[0.4em] uppercase mt-2 drop-shadow-sm">
+              <span>Toronto</span>
+              <Sun size={10} className="shrink-0 text-white/70" />
+              <span>Jul 24 &lsquo;26</span>
+            </span>
           </div>
 
           <a

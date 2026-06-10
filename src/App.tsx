@@ -15,95 +15,6 @@ const MARQUEE_ITEMS = [
   '21+',
 ];
 
-function TorontoSkyline({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 1440 240"
-      preserveAspectRatio="xMidYMax meet"
-      aria-hidden
-      className={className}
-      fill="currentColor"
-    >
-      {/* Distant haze layer */}
-      <g opacity="0.22">
-        <rect x="0" y="160" width="50" height="80" />
-        <rect x="55" y="150" width="45" height="90" />
-        <rect x="105" y="170" width="40" height="70" />
-        <rect x="150" y="140" width="50" height="100" />
-        <rect x="205" y="160" width="45" height="80" />
-        <rect x="255" y="135" width="40" height="105" />
-        <rect x="300" y="155" width="50" height="85" />
-        <rect x="355" y="145" width="45" height="95" />
-        <rect x="405" y="165" width="50" height="75" />
-        <rect x="460" y="140" width="45" height="100" />
-        <rect x="510" y="155" width="50" height="85" />
-        <rect x="565" y="125" width="45" height="115" />
-        <rect x="615" y="155" width="50" height="85" />
-        <rect x="670" y="140" width="45" height="100" />
-        <rect x="720" y="160" width="50" height="80" />
-        <rect x="775" y="135" width="45" height="105" />
-        <rect x="825" y="155" width="50" height="85" />
-        <rect x="880" y="150" width="45" height="90" />
-        <rect x="930" y="135" width="50" height="105" />
-        <rect x="985" y="160" width="45" height="80" />
-        <rect x="1035" y="140" width="50" height="100" />
-        <rect x="1090" y="155" width="45" height="85" />
-        <rect x="1140" y="125" width="50" height="115" />
-        <rect x="1195" y="155" width="45" height="85" />
-        <rect x="1245" y="140" width="50" height="100" />
-        <rect x="1300" y="160" width="45" height="80" />
-        <rect x="1350" y="135" width="50" height="105" />
-        <rect x="1405" y="155" width="35" height="85" />
-      </g>
-
-      {/* Front skyline layer */}
-      <g opacity="0.55">
-        {/* Lakeshore low-rises */}
-        <rect x="0" y="195" width="65" height="45" />
-        <rect x="55" y="180" width="50" height="60" />
-        <rect x="100" y="195" width="55" height="45" />
-        <rect x="150" y="165" width="50" height="75" />
-        <rect x="195" y="185" width="55" height="55" />
-        <rect x="245" y="170" width="50" height="70" />
-
-        {/* CN Tower — antenna, sky pod, main pod, base */}
-        <rect x="317" y="8" width="6" height="58" />
-        <ellipse cx="320" cy="70" rx="10" ry="5" />
-        <rect x="314" y="75" width="12" height="52" />
-        <path d="M 290 127 L 350 127 L 346 145 L 338 160 L 302 160 L 294 145 Z" />
-        <rect x="307" y="160" width="26" height="8" />
-        <rect x="312" y="168" width="16" height="46" />
-        <path d="M 293 214 L 347 214 L 363 240 L 277 240 Z" />
-
-        {/* Filler building */}
-        <rect x="370" y="185" width="35" height="55" />
-
-        {/* Rogers Centre dome */}
-        <path d="M 415 240 Q 415 175 470 175 Q 525 175 525 240 Z" />
-
-        {/* Downtown core */}
-        <rect x="530" y="160" width="55" height="80" />
-        <rect x="585" y="140" width="50" height="100" />
-        <rect x="635" y="165" width="60" height="75" />
-        <rect x="695" y="150" width="55" height="90" />
-        <rect x="750" y="135" width="50" height="105" />
-        <rect x="800" y="120" width="55" height="120" />
-        <rect x="855" y="140" width="50" height="100" />
-        <rect x="905" y="125" width="55" height="115" />
-        <rect x="960" y="155" width="50" height="85" />
-        <rect x="1010" y="140" width="60" height="100" />
-        <rect x="1070" y="160" width="55" height="80" />
-        <rect x="1125" y="145" width="50" height="95" />
-        <rect x="1175" y="175" width="55" height="65" />
-        <rect x="1230" y="155" width="50" height="85" />
-        <rect x="1280" y="175" width="60" height="65" />
-        <rect x="1340" y="160" width="50" height="80" />
-        <rect x="1390" y="185" width="50" height="55" />
-      </g>
-    </svg>
-  );
-}
-
 function MarqueeStrip() {
   const items = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS];
   return (
@@ -216,11 +127,6 @@ export default function App() {
           </div>
         </div>
       </main>
-
-      {/* Toronto skyline backdrop */}
-      <div className="relative -mt-24 md:-mt-40 pointer-events-none text-[var(--color-deep)] leading-none" aria-hidden>
-        <TorontoSkyline className="w-full h-auto block" />
-      </div>
 
       <MarqueeStrip />
 

@@ -22,6 +22,8 @@ const MARQUEE_ITEMS = [
   'CABANA POOL BAR',
   'JULY 24, 2026',
   'NO11',
+  'JAZZWRLD',
+  'THUKUTHELA',
   'SUNANDSOUND.CA',
 ];
 

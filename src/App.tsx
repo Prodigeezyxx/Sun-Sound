@@ -157,7 +157,11 @@ export default function App() {
             </h1>
 
             <p className="text-white/85 text-base md:text-lg max-w-md mx-auto lg:mx-0 mb-8 leading-relaxed">
-              A summer day on the water in Toronto. Sun, sound, and Cabana vibes — July 24th, 2026.
+              <span className="font-display uppercase tracking-wider text-white">Cabana Pool Bar</span>
+              <br />
+              11 Polson St, 1st Floor · Toronto, ON M5A 1A4
+              <br />
+              Saturday · July 24, 2026
             </p>
 
             <div
@@ -283,6 +287,17 @@ export default function App() {
 
           <p className="text-white/50 text-xs text-center">
             &copy; 2026 {FESTIVAL_NAME}. All rights reserved.
+          </p>
+          <p className="text-white/40 text-[10px] text-center -mt-4">
+            Designed by{' '}
+            <a
+              href="https://www.floatsanywhere.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[var(--color-sun)] transition-colors underline-offset-2 hover:underline"
+            >
+              Floats
+            </a>
           </p>
         </div>
       </footer>

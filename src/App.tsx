@@ -2,6 +2,16 @@ import { Instagram, MapPin, Music2, Sun } from 'lucide-react';
 import logoImg from './assets/images/sun-sound-logo.png';
 import posterImg from './assets/images/sun-sound-poster.png';
 
+// Optional additional posters — drop a `sun-sound-poster-2.png` (or -3, -4, …)
+// into src/assets/images/ and it will appear in the lineup deck automatically.
+const extraPosterMods = import.meta.glob<{ default: string }>(
+  './assets/images/sun-sound-poster-*.png',
+  { eager: true },
+);
+const EXTRA_POSTERS: string[] = Object.entries(extraPosterMods)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([, mod]) => mod.default);
+
 const FESTIVAL_NAME = 'Sun and Sound Festival';
 const SIGNUP_URL = 'https://laylo.com/sunandsound/sssf';
 
@@ -112,21 +122,51 @@ export default function App() {
             </div>
           </div>
 
-          {/* Poster */}
+          {/* Poster(s) */}
           <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-            <div className="relative animate-float">
-              <div className="absolute -inset-3 bg-[var(--color-sun)]/40 rounded-[2rem] blur-xl" />
-              <div className="relative w-[min(100%,340px)] md:w-[min(100%,380px)] aspect-[3/4] rounded-[1.75rem] overflow-hidden shadow-2xl shadow-[var(--color-deep)]/30 border-4 border-white/60 rotate-[-2deg] hover:rotate-0 transition-transform duration-500">
-                <img
-                  src={posterImg}
-                  alt={`${FESTIVAL_NAME} — NO11 performing live`}
-                  className="w-full h-full object-cover"
-                />
+            {EXTRA_POSTERS.length === 0 ? (
+              // Single poster
+              <div className="relative animate-float">
+                <div className="absolute -inset-3 bg-[var(--color-sun)]/40 rounded-[2rem] blur-xl" />
+                <div className="relative w-[min(100%,340px)] md:w-[min(100%,380px)] aspect-[3/4] rounded-[1.75rem] overflow-hidden shadow-2xl shadow-[var(--color-deep)]/30 border-4 border-white/60 rotate-[-2deg] hover:rotate-0 transition-transform duration-500">
+                  <img
+                    src={posterImg}
+                    alt={`${FESTIVAL_NAME} — NO11 performing live`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="absolute -bottom-4 -left-4 md:-left-8 bg-[var(--color-sun)] text-[var(--color-deep)] font-display uppercase tracking-wider text-base px-4 py-2 rounded-full shadow-lg rotate-[-6deg]">
+                  NO11 · Live
+                </div>
               </div>
-              <div className="absolute -bottom-4 -left-4 md:-left-8 bg-[var(--color-sun)] text-[var(--color-deep)] font-display uppercase tracking-wider text-base px-4 py-2 rounded-full shadow-lg rotate-[-6deg]">
-                NO11 · Live
+            ) : (
+              // Deck of posters — front + fan of extras behind
+              <div className="relative animate-float w-full max-w-[420px] aspect-[3/4]">
+                <div className="absolute inset-0 bg-[var(--color-sun)]/40 rounded-[2rem] blur-2xl" />
+
+                {/* Back poster — secondary lineup */}
+                <div className="absolute top-6 -left-2 sm:-left-4 md:-left-6 w-[78%] aspect-[3/4] rounded-[1.5rem] overflow-hidden shadow-2xl shadow-[var(--color-deep)]/40 border-4 border-white/55 rotate-[-7deg] hover:rotate-[-2deg] transition-transform duration-500 z-0">
+                  <img
+                    src={EXTRA_POSTERS[0]}
+                    alt={`${FESTIVAL_NAME} — additional lineup`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* Front poster — NO11 headliner */}
+                <div className="absolute top-0 right-0 w-[82%] aspect-[3/4] rounded-[1.75rem] overflow-hidden shadow-2xl shadow-[var(--color-deep)]/30 border-4 border-white/60 rotate-[3deg] hover:rotate-0 transition-transform duration-500 z-10">
+                  <img
+                    src={posterImg}
+                    alt={`${FESTIVAL_NAME} — NO11 performing live`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-[var(--color-sun)] text-[var(--color-deep)] font-display uppercase tracking-wider text-sm sm:text-base px-5 py-2 rounded-full shadow-lg rotate-[-3deg] z-20 whitespace-nowrap">
+                  Lineup · Live
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </main>
@@ -152,8 +192,8 @@ export default function App() {
             {[
               {
                 icon: MapPin,
-                title: 'Cabana, Toronto',
-                desc: 'Right on the water with the CN Tower in view. The city\'s summer home base.',
+                title: 'Cabana Pool Bar',
+                desc: '11 Polson St, 1st Floor · Toronto, ON M5A 1A4. Right on the water with the CN Tower in view.',
               },
               {
                 icon: Sun,

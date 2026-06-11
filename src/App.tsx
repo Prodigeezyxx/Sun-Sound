@@ -270,7 +270,7 @@ export default function App() {
 
           <div className="flex items-center gap-4">
             <a
-              href="#instagram"
+              href="https://www.instagram.com/sunandsound.ca?igsh=MXJwZDExNTR5eHFnbw=="
               aria-label="Instagram"
               className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-[var(--color-sun)] hover:text-[var(--color-deep)] transition-colors"
             >

@@ -14,7 +14,7 @@ const EXTRA_POSTERS: string[] = Object.entries(extraPosterMods)
   .map(([, mod]) => mod.default);
 
 const FESTIVAL_NAME = 'Sun and Sound Festival';
-const SIGNUP_URL = 'https://laylo.com/sunandsound/sssf';
+const SIGNUP_URL = 'https://www.ticketgateway.com/event/view/sunandsoundfest';
 
 const MARQUEE_ITEMS = [
   FESTIVAL_NAME.toUpperCase(),
@@ -138,7 +138,7 @@ export default function App() {
             rel="noopener noreferrer"
             className="shrink-0 bg-[var(--color-sun)] text-[var(--color-deep)] font-display text-sm md:text-base px-4 md:px-5 py-2 rounded-full hover:bg-[var(--color-sun-deep)] transition-colors shadow-md"
           >
-            Sign Up
+            Tickets
           </a>
         </nav>
       </header>
@@ -147,13 +147,13 @@ export default function App() {
       <main className="px-4 md:px-8 pt-4 pb-16 md:pt-8 md:pb-24">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div className="order-2 lg:order-1 text-center lg:text-left">
-            <p className="inline-flex items-center gap-2 bg-[var(--color-deep)]/80 text-[var(--color-sun)] font-display tracking-widest text-xs md:text-sm px-4 py-1.5 rounded-full mb-6 backdrop-blur-sm uppercase">
+            <p className="inline-flex items-center gap-2 bg-[var(--color-sun)] text-[var(--color-deep)] font-display tracking-widest text-xs md:text-sm px-4 py-1.5 rounded-full mb-6 backdrop-blur-sm uppercase font-bold">
               <Music2 size={14} />
-              Tickets Dropping Soon
+              Tickets On Sale Now
             </p>
 
             <h1 className="font-display uppercase tracking-tight text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[0.92] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.35)] mb-6">
-              Be the first<br />to know when<br /><span className="text-[var(--color-sun)]">tickets drop.</span>
+              Secure your<br />spot for<br /><span className="text-[var(--color-sun)]">sun &amp; sound.</span>
             </h1>
 
             <p className="text-white/85 text-base md:text-lg max-w-md mx-auto lg:mx-0 mb-8 leading-relaxed">
@@ -169,17 +169,17 @@ export default function App() {
               className="scroll-mt-28 max-w-md mx-auto lg:mx-0 bg-white/95 backdrop-blur rounded-2xl p-5 md:p-6 shadow-2xl shadow-[var(--color-deep)]/20 animate-pulse-glow"
             >
               <p className="block font-display uppercase tracking-widest text-base text-[var(--color-deep)] mb-3">
-                Get on the list
+                Get Your Tickets
               </p>
               <a
                 href={SIGNUP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full text-center bg-[var(--color-deep)] text-white font-display uppercase tracking-wider text-lg px-7 py-4 rounded-xl hover:bg-[var(--color-pool)] transition-colors"
+                className="block w-full text-center bg-[var(--color-deep)] text-white font-display uppercase tracking-wider text-lg px-7 py-4 rounded-xl hover:bg-[var(--color-sun)] hover:text-[var(--color-deep)] transition-colors"
               >
-                Sign Up Now
+                Buy Tickets
               </a>
-              <p className="text-xs text-[var(--color-deep)]/50 mt-3">21+ · No spam, just the drop.</p>
+              <p className="text-xs text-[var(--color-deep)]/50 mt-3">21+ · Secure your spot now.</p>
             </div>
           </div>
 
@@ -234,7 +234,7 @@ export default function App() {
               {
                 icon: Sun,
                 title: 'July 24, 2026',
-                desc: 'One day. Full sun. Save the date — tickets are coming.',
+                desc: 'One day. Full sun. Tickets on sale now — grab yours before they\'re gone.',
               },
             ].map(({ icon: Icon, title, desc }) => (
               <div

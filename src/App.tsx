@@ -184,7 +184,7 @@ export default function App() {
                 rel="noopener noreferrer"
                 className="block w-full text-center bg-[var(--color-deep)] text-white font-display uppercase tracking-wider text-lg px-7 py-4 rounded-xl hover:bg-[var(--color-sun)] hover:text-[var(--color-deep)] transition-colors"
               >
-                Buy Passes
+                General Tickets
               </a>
               <a
                 href="https://buy.tablelist.com/e/8da5de481f71b1b3?at=61c5de745e73f315"

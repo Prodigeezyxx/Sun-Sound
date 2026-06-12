@@ -75,9 +75,13 @@ function LineupDeck({ posters }: { posters: string[] }) {
         );
       })}
 
-      <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-[var(--color-sun)] text-[var(--color-deep)] font-display uppercase tracking-wider text-sm sm:text-base px-5 py-2 rounded-full shadow-lg rotate-[-3deg] z-40 whitespace-nowrap pointer-events-none">
+      <button
+        type="button"
+        onClick={() => setActiveIdx((activeIdx + 1) % n)}
+        className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-[var(--color-sun)] text-[var(--color-deep)] font-display uppercase tracking-wider text-sm sm:text-base px-5 py-2 rounded-full shadow-lg rotate-[-3deg] z-40 whitespace-nowrap cursor-pointer hover:bg-[var(--color-sun-deep)] transition-colors"
+      >
         Lineup · Tap to swap
-      </div>
+      </button>
     </div>
   );
 }
@@ -169,7 +173,7 @@ export default function App() {
               className="scroll-mt-28 max-w-md mx-auto lg:mx-0 bg-white/95 backdrop-blur rounded-2xl p-5 md:p-6 shadow-2xl shadow-[var(--color-deep)]/20 animate-pulse-glow"
             >
               <p className="block font-display uppercase tracking-widest text-base text-[var(--color-deep)] mb-3">
-                Get Your Tickets
+                Get Your Passes
               </p>
               <a
                 href={SIGNUP_URL}
@@ -177,9 +181,17 @@ export default function App() {
                 rel="noopener noreferrer"
                 className="block w-full text-center bg-[var(--color-deep)] text-white font-display uppercase tracking-wider text-lg px-7 py-4 rounded-xl hover:bg-[var(--color-sun)] hover:text-[var(--color-deep)] transition-colors"
               >
-                Buy Tickets
+                Buy Passes
               </a>
-              <p className="text-xs text-[var(--color-deep)]/50 mt-3">21+ · Secure your spot now.</p>
+              <a
+                href="https://buy.tablelist.com/e/8da5de481f71b1b3?at=61c5de745e73f315"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full text-center border-2 border-[var(--color-sun)] text-[var(--color-sun)] font-display uppercase tracking-wider text-lg px-7 py-4 rounded-xl mt-3 hover:bg-[var(--color-sun)] hover:text-[var(--color-deep)] transition-colors"
+              >
+                VIP Passes
+              </a>
+              <p className="text-xs text-[var(--color-deep)]/50 mt-3">19+ · Secure your spot now.</p>
             </div>
           </div>
 

@@ -23,6 +23,9 @@ const MARQUEE_ITEMS = [
   'JULY 24, 2026',
   'NO11',
   'JAZZWRLD & THUKUTHELA',
+  'AJ STYLES',
+  'ZHOLA',
+  'DYNAMITE',
   'SUNANDSOUND.CA',
 ];
 

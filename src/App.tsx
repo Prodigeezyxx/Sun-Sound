@@ -24,7 +24,7 @@ const MARQUEE_ITEMS = [
   'NO11',
   'JAZZWRLD & THUKUTHELA',
   'AJ STYLES',
-  'ZHOLA',
+  'ZOHLA',
   'DYNAMITE',
   'SUNANDSOUND.CA',
 ];

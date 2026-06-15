@@ -168,7 +168,7 @@ export default function App() {
               <br />
               11 Polson St, 1st Floor · Toronto, ON M5A 1A4
               <br />
-              Saturday · July 24, 2026
+              Friday · July 24, 2026
             </p>
 
             <div

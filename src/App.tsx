@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Instagram, MapPin, Music2, Sun } from 'lucide-react';
 import logoImg from './assets/images/sun-sound-logo.png';
-import posterImg from './assets/images/sun-sound-poster.png';
+import posterImg from './assets/images/mavo.jpg';
 
 // Optional additional posters — drop a `sun-sound-poster-2.png` (or -3, -4, …)
 // into src/assets/images/ and it will appear in the lineup deck automatically.
@@ -21,6 +21,7 @@ const MARQUEE_ITEMS = [
   'TORONTO',
   'CABANA POOL BAR',
   'JULY 24, 2026',
+  'MAVO',
   'NO11',
   'JAZZWRLD & THUKUTHELA',
   'AJ STYLES',
@@ -207,12 +208,12 @@ export default function App() {
                 <div className="relative w-[min(100%,340px)] md:w-[min(100%,380px)] aspect-[3/4] rounded-[1.75rem] overflow-hidden shadow-2xl shadow-[var(--color-deep)]/30 border-4 border-white/60 rotate-[-2deg] hover:rotate-0 transition-transform duration-500">
                   <img
                     src={posterImg}
-                    alt={`${FESTIVAL_NAME} — NO11 performing live`}
+                    alt={`${FESTIVAL_NAME} — MAVO performing live`}
                     className="w-full h-full object-cover object-bottom"
                   />
                 </div>
                 <div className="absolute -bottom-4 -left-4 md:-left-8 bg-[var(--color-sun)] text-[var(--color-deep)] font-display uppercase tracking-wider text-base px-4 py-2 rounded-full shadow-lg rotate-[-6deg]">
-                  NO11 · Live
+                  MAVO · Live
                 </div>
               </div>
             ) : (
